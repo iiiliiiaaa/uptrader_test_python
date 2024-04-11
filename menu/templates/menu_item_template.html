@@ -1,0 +1,16 @@
+<li>
+    <a href="{{ item.item.get_absolute_url }}"
+       {% if item.is_active %}
+        style="font-weight: bold;"
+       {% endif %}>
+        {{ item.item.title }}
+    </a>
+
+    {% if item.expand %}
+    <ul>
+        {% for child in item.children %}
+            {% include "menu_item_template.html" with item=child %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</li>
